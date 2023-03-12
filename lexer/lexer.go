@@ -36,3 +36,8 @@ func (l *Lexer) readIdentifier() string {
 	}
 	return l.input[position:l.position]
 }
+
+// checks for letters and underscores
+func isLetter(ch byte) bool {
+	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_'
+}
