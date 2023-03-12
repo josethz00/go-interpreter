@@ -28,3 +28,11 @@ func (l *Lexer) NextToken() token.Token {
 		}
 	}
 }
+
+func (l *Lexer) readIdentifier() string {
+	position := l.position // this variable is used to store the position of the first letter of the identifier
+	for isLetter(l.ch) {
+		l.readChar()
+	}
+	return l.input[position:l.position]
+}
