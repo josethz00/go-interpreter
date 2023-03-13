@@ -28,6 +28,8 @@ func (l *Lexer) NextToken() token.Token {
 			tok = newToken(token.ILLEGAL, l.ch)
 		}
 	}
+	l.readChar() // point the read to the next char
+	return tok
 }
 
 func (l *Lexer) readIdentifier() string {
