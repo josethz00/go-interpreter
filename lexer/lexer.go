@@ -41,7 +41,8 @@ func (l *Lexer) NextToken() token.Token {
 		tok.Type = token.EOF
 	default:
 		if isLetter(l.ch) {
-			tok.Literal = l.readIdentifier() // if is a letter at start, delegate it to a identifier function
+			tok.Literal = l.readIdentifier()          // if is a letter at start, delegate it to a identifier functio
+			tok.Type = token.LookupIdent(tok.Literal) // check if the identifier is a keyword or not and then assign it
 			return tok
 		} else { // otherwise is illegal
 			tok = newToken(token.ILLEGAL, l.ch)
